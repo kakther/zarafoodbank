@@ -1,11 +1,18 @@
-import './App.css';
+import React, { Component } from 'react';
+import { Navbar, NavbarBrand} from 'reactstrap';
 
-function App() {
-  return (
+class App extends Component{
+  render() {
+  return(
     <div className="App">
-      <h1>hello world</h1>
+      <Navbar color="dark">
+        <div className="container">
+          <NavbarBrand href="/">ZaraFoodBank</NavbarBrand>
+        </div>
+      </Navbar>
     </div>
   );
+}
 }
 
 export default App;
