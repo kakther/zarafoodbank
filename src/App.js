@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Navbar, NavbarBrand} from 'reactstrap';
-import Menu from './components/MenuComponent';
+import MenuItems from './components/MenuComponent';
 import {DISHES} from './shared/dishes';
 class App extends Component{
 
@@ -9,17 +9,17 @@ class App extends Component{
 
     this.state = {
       dishes: DISHES
-    }
+    };
   }
   render() {
   return(
     <div className="App">
-      <Navbar color="dark">
+      <Navbar dark color="dark">
         <div className="container">
           <NavbarBrand href="/">ZaraFoodBank</NavbarBrand>
-        </div>
+        </div>      
       </Navbar>
-      <Menu dishes={this.state.dishes}/>
+      <MenuItems dishes={this.state.dishes}/>
     </div>
   );
 }
