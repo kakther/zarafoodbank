@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, CardBody, CardTitle, CardText } from 'reactstrap';
+import { Card, CardBody, CardTitle, CardText, CardImg } from 'reactstrap';
 
 
 
@@ -11,43 +11,31 @@ class DishDetail extends Component {
         };
     }
 
-    onDishSelect(dis) {
-      this.setState({selectedDish: dis});
+    onDishSelect(dish) {
+      this.setState({selectedDish: dish});
     }
 
-    renderDish(dis) {
-        if (dis != null) {
-            return (
-              <Card>                 
-                <CardBody>
-                  <CardTitle>{dis.name}</CardTitle>
-                  <CardText>{dis.description}</CardText>
-                </CardBody> 
-              </Card>
-            )
-        }
-        else {
-          return (
-            <div></div>
-          )
-        }
+    renderDish(dish){
+      if(dish != null){
+        return (
+          <Card className="col-12 col-md-5 m-1">
+            <CardImg width="100%" src={dish.image} />     
+            <CardBody>
+              <CardTitle>{dish.name}</CardTitle>
+              <CardText>{dish.description}</CardText>
+            </CardBody>
+          </Card>
+        )
+      }else{
+        return (
+          <div></div>
+        )
       }
+    } 
     render() {
-        const plates = this.props.dishes.map((dis) => {
-            return (
-              <div key={dis.id} className="col-12 col-md-5 m-1">
-                <Card onClick={() => this.onDishSelect(dis)}>
-                  <CardTitle>{dis.name}</CardTitle>      
-                  <CardText>{dis.description}</CardText>
-                </Card>
-              </div>
-            );
-        });
+        
         return (
             <div className="container">
-              <div className="row">
-                {plates}
-              </div>
             <div className="row">
               {this.renderDish(this.state.selectedDish)}
             </div>
